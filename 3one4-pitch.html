@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3one4 Capital, Consumer Internet Gaps, Varchas Manohar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syne:wght@400;500;600;700&family=Syne+Mono&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+
+:root{
+  --bg:#f7f4ee;
+  --bg2:#eeebe3;
+  --bg3:#e5e2d9;
+  --ink:#1a1710;
+  --ink2:#3a3828;
+  --ink3:#7a7768;
+  --rule:#ccc9be;
+  --accent1:#c4500a; /* burnt orange */
+  --accent1-pale:#faf0e8;
+  --accent2:#1a3d2a; /* deep green */
+  --accent2-pale:#e5ede8;
+  --accent3:#2a2060; /* deep navy */
+  --accent3-pale:#eaebf5;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Syne',sans-serif;
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* ── NAV ── */
+.nav{
+  position:sticky;top:0;z-index:99;
+  background:var(--ink);
+  height:46px;
+  display:flex;align-items:center;
+  justify-content:space-between;
+  padding:0 48px;
+}
+.nav-id{
+  font-family:'Syne Mono',monospace;
+  font-size:11px;letter-spacing:.06em;
+  color:#555;
+}
+.nav-links{
+  display:flex;gap:28px;list-style:none;
+}
+.nav-links a{
+  font-family:'Syne Mono',monospace;
+  font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:#444;text-decoration:none;transition:color .15s;
+}
+.nav-links a:hover{color:#aaa}
+
+/* ── HERO ── */
+.hero{
+  padding:96px 48px 80px;
+  max-width:1040px;margin:0 auto;
+  border-bottom:1px solid var(--rule);
+  position:relative;
+}
+.hero-pre{
+  font-family:'Syne Mono',monospace;
+  font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--ink3);margin-bottom:28px;
+  display:flex;align-items:center;gap:14px;
+}
+.hero-pre::after{content:'';flex:0 0 36px;height:1px;background:var(--rule)}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(40px,5.5vw,68px);
+  line-height:1.04;font-weight:300;
+  color:var(--ink);
+  max-width:860px;margin-bottom:26px;
+}
+.hero h1 em{font-style:italic;color:var(--accent1)}
+.hero-sub{
+  font-size:16px;line-height:1.78;
+  color:var(--ink3);max-width:540px;
+  margin-bottom:40px;font-weight:400;
+}
+.hero-chips{display:flex;gap:0;border:1px solid var(--rule);width:fit-content}
+.chip{
+  font-family:'Syne Mono',monospace;
+  font-size:10px;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--ink3);padding:8px 18px;
+  border-right:1px solid var(--rule);
+}
+.chip:last-child{border-right:none}
+
+/* ── SECTION WRAPPER ── */
+.wrap{
+  max-width:1040px;margin:0 auto;
+  padding:80px 48px;
+  border-bottom:1px solid var(--rule);
+}
+
+/* ── SECTION LABELS ── */
+.s-label{
+  font-family:'Syne Mono',monospace;
+  font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink3);margin-bottom:16px;
+  display:flex;align-items:center;gap:10px;
+}
+.s-label::after{content:'';flex:0 0 32px;height:1px;background:var(--rule)}
+
+h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(28px,3.8vw,44px);
+  font-weight:300;line-height:1.12;
+  color:var(--ink);margin-bottom:24px;
+}
+h2 em{font-style:italic;color:var(--accent2)}
+
+.prose{
+  font-size:15.5px;line-height:1.82;
+  color:var(--ink2);max-width:680px;
+}
+.prose strong{color:var(--ink);font-weight:600}
+.prose+.prose{margin-top:14px}
+
+/* ── THESIS STRIP ── */
+.thesis-strip{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--rule);
+  border:1px solid var(--rule);
+  margin:36px 0;
+}
+.tc{background:var(--bg);padding:28px 24px}
+.tc-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:44px;font-weight:300;
+  color:var(--accent1);line-height:1;
+  margin-bottom:8px;
+}
+.tc-label{
+  font-family:'Syne Mono',monospace;
+  font-size:9.5px;text-transform:uppercase;
+  letter-spacing:.08em;color:var(--ink3);
+  margin-bottom:10px;
+}
+.tc-body{font-size:13px;color:var(--ink2);line-height:1.6}
+
+/* ── PATTERN PROOF ── */
+.proof-row{
+  display:grid;grid-template-columns:1fr 1fr 1fr;
+  gap:1px;background:var(--rule);
+  border:1px solid var(--rule);margin:32px 0;
+}
+.proof-cell{background:var(--bg);padding:22px 20px}
+.proof-arrow{
+  font-family:'Syne Mono',monospace;
+  font-size:9px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--accent2);margin-bottom:8px;
+  display:flex;align-items:center;gap:6px;
+}
+.proof-arrow::before{content:'→';font-size:10px}
+.proof-co{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:400;color:var(--ink);
+  margin-bottom:4px;
+}
+.proof-desc{font-size:12.5px;color:var(--ink3);line-height:1.55}
+
+/* ── GAP SECTION ── */
+.gap-block{margin-top:56px}
+.gap-block+.gap-block{margin-top:72px;padding-top:72px;border-top:1px solid var(--rule)}
+
+.gap-header{
+  display:flex;align-items:flex-start;
+  justify-content:space-between;
+  gap:32px;margin-bottom:28px;
+}
+.gap-title-block{flex:1}
+.gap-num{
+  font-family:'Syne Mono',monospace;
+  font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink3);margin-bottom:10px;
+}
+.gap-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(30px,3.5vw,42px);
+  font-weight:300;line-height:1.1;
+  color:var(--ink);margin-bottom:12px;
+}
+.gap-title em{font-style:italic;color:var(--accent1)}
+.gap-sub{font-size:14px;color:var(--ink3);line-height:1.55}
+
+.gap-stat-box{
+  flex:0 0 200px;
+  border:1px solid var(--accent2);
+  padding:22px 20px;
+  background:var(--accent2);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.gsb-n{
+  font-family:'Cormorant Garamond',serif;
+  font-size:38px;font-weight:300;
+  color:#e8f0ea;line-height:1;margin-bottom:4px;
+}
+.gsb-l{font-size:12px;color:#b5cebe;line-height:1.45}
+.gsb-src{
+  font-family:'Syne Mono',monospace;
+  font-size:9.5px;color:var(--rule);
+  margin-top:8px;display:block;
+}
+.gsb-src a{color:var(--ink3);text-decoration:none}
+.gsb-src a:hover{color:var(--ink)}
+
+.gap-body{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:32px;margin-top:28px;
+}
+.gap-col h3{
+  font-family:'Syne Mono',monospace;
+  font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink3);margin-bottom:14px;
+  padding-bottom:10px;border-bottom:1px solid var(--rule);
+}
+.gap-text{font-size:14.5px;line-height:1.78;color:var(--ink2)}
+.gap-text strong{color:var(--ink);font-weight:600}
+.gap-text+.gap-text{margin-top:12px}
+
+/* stats row inside gap */
+.gap-stats{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1px;background:var(--rule);
+  border:1px solid var(--rule);margin-top:28px;
+}
+.gs{background:var(--bg);padding:18px 16px}
+.gs-n{
+  font-family:'Cormorant Garamond',serif;
+  font-size:28px;font-weight:300;color:var(--accent1);line-height:1;margin-bottom:4px;
+}
+.gs-l{font-size:12px;color:var(--ink3);line-height:1.4}
+.gs-src{
+  font-family:'Syne Mono',monospace;
+  font-size:9px;display:block;margin-top:6px;
+}
+.gs-src a{color:var(--ink3);text-decoration:none}
+.gs-src a:hover{color:var(--ink)}
+
+/* ── CASE STUDIES ── */
+.cs-block{margin-top:36px}
+.cs-block-label{
+  font-family:'Syne Mono',monospace;
+  font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink3);padding-bottom:10px;
+  border-bottom:1px solid var(--rule);margin-bottom:0;
+}
+.cs-row{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:var(--rule);
+  border:1px solid var(--rule);border-top:none;
+}
+.cs{background:var(--bg);padding:18px 18px 16px}
+.cs-name{font-weight:600;font-size:13.5px;color:var(--ink);margin-bottom:4px}
+.cs-desc{font-size:12px;color:var(--ink3);line-height:1.6}
+.cs-tag{
+  display:inline-block;margin-top:8px;
+  font-family:'Syne Mono',monospace;
+  font-size:9px;letter-spacing:.04em;text-transform:uppercase;
+  padding:2px 8px;border:1px solid;
+}
+.t-angel{background:var(--accent1-pale);border-color:#f0b898;color:var(--accent1)}
+.t-seed{background:var(--accent2-pale);border-color:#b5c8be;color:var(--accent2)}
+.t-series{background:var(--accent3-pale);border-color:#b8b8d8;color:var(--accent3)}
+.t-none{background:var(--bg3);border-color:var(--rule);color:var(--ink3)}
+
+/* ── WHY ME ── */
+.why-list{
+  display:flex;flex-direction:column;gap:0;
+  border:1px solid var(--rule);margin:32px 0;
+}
+.why-item{
+  padding:22px 26px;
+  border-bottom:1px solid var(--rule);
+  display:grid;grid-template-columns:auto 1fr;
+  gap:24px;align-items:start;
+}
+.why-item:last-child{border-bottom:none}
+.why-n{
+  font-family:'Cormorant Garamond',serif;
+  font-size:32px;font-weight:300;
+  color:var(--rule);line-height:1;
+  padding-top:2px;
+}
+.why-label{
+  font-family:'Syne Mono',monospace;
+  font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink3);margin-bottom:6px;
+}
+.why-head{font-weight:600;font-size:14px;color:var(--ink);margin-bottom:6px}
+.why-body{font-size:13.5px;color:var(--ink2);line-height:1.72}
+
+/* contribution grid */
+.contrib{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1px;background:var(--rule);
+  border:1px solid var(--rule);margin:32px 0;
+}
+.cc{background:var(--bg);padding:24px}
+.cc-title{font-weight:600;font-size:14px;color:var(--ink);margin-bottom:8px}
+.cc-body{font-size:13px;color:var(--ink2);line-height:1.7}
+
+/* ── CTA ── */
+.cta{background:var(--ink);padding:96px 48px}
+.cta-in{max-width:1040px;margin:0 auto}
+.cta-in h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(32px,4.5vw,52px);
+  font-weight:300;color:#e8e4db;margin-bottom:20px;
+}
+.cta-in h2 em{font-style:italic;color:#d4916a}
+.cta-body{font-size:16px;line-height:1.75;color:#666;max-width:480px;margin-bottom:36px}
+.cta-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{
+  display:inline-block;
+  font-family:'Syne Mono',monospace;
+  font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  padding:13px 28px;text-decoration:none;
+  transition:all .15s;border:1px solid;
+}
+.btn-p{background:#e8e4db;color:var(--ink);border-color:#e8e4db}
+.btn-p:hover{background:#fff;border-color:#fff}
+.btn-s{background:transparent;color:#555;border-color:#2a2820}
+.btn-s:hover{color:#999;border-color:#444}
+
+.src-line{
+  font-family:'Syne Mono',monospace;
+  font-size:9.5px;letter-spacing:.04em;
+  color:var(--rule);
+  border-top:1px solid var(--rule);
+  margin-top:40px;padding-top:16px;
+  line-height:2.2;text-transform:uppercase;
+}
+.src-line a{color:var(--ink3);text-decoration:none}
+.src-line a:hover{color:var(--ink)}
+
+@media(max-width:720px){
+  .nav{padding:0 20px}
+  .nav-links{display:none}
+  .hero,.wrap{padding:52px 20px}
+  .thesis-strip,.proof-row{grid-template-columns:1fr}
+  .gap-header{flex-direction:column}
+  .gap-body{grid-template-columns:1fr}
+  .gap-stats,.cs-row,.contrib{grid-template-columns:1fr 1fr}
+  .cta{padding:60px 20px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <span class="nav-id">Varchas Manohar / 3one4 Capital Pitch</span>
+  <ul class="nav-links">
+    <li><a href="#thesis">Thesis</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#gaps">Gaps</a></li>
+    <li><a href="#why">Why Me</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-pre">Consumer Internet · Consumer Tech · 2026</div>
+  <h1>I read 3one4's thesis in detail.<br><em>Here are three consumer internet categories it implies but hasn't yet backed.</em></h1>
+  <p class="hero-sub">A pattern analysis of the 3one4 consumer portfolio, the repeating investment logic behind it, and three sub-categories where that logic applies with full force and minimal competition.</p>
+  <div class="hero-chips">
+    <span class="chip">12 companies mapped</span>
+    <span class="chip">3 gaps identified</span>
+    <span class="chip">15 startups studied</span>
+    <span class="chip">Bengaluru · May 2026</span>
+  </div>
+</header>
+
+<!-- 01 THESIS -->
+<section class="wrap" id="thesis">
+  <div class="s-label">01 / The Thesis</div>
+  <h2>What I read.<br><em>Before building this.</em></h2>
+  <p class="prose">The thesis page defines the mandate as <strong>"unlocking value from direct access to a large install base of young, empowered, digitally native and highly selective consumers."</strong> The Consumption Report 2025 maps this across three upgrade frontiers (Bharat Core to Value Upgraders, Value Upgraders to Urban Aspirants, Urban Aspirants to Affluent India), four income-based archetypes, and six aspirational archetypes: The Self-Optimizer, The Silver Economy, The Modern Parent, The Indie Luxe Shopper, The Tier 2/3 Aspirant, and The Household CFO.</p>
+  <p class="prose" style="margin-top:14px;">The portfolio map and gap analysis below are built against that framework.</p>
+</section>
+
+<!-- 02 PORTFOLIO MAP -->
+<section class="wrap" id="portfolio">
+  <div class="s-label">02 / Consumer Portfolio</div>
+  <h2>12 companies.<br><em>Consumer Internet and Consumer Tech, mapped by archetype.</em></h2>
+  <p class="prose" style="margin-bottom:24px;">The four income archetypes from the Consumption Report 2025, mapped against the actual portfolio.</p>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-bottom:12px;">
+    <div style="background:#fdf4e3;padding:18px 16px;">
+      <div style="font-family:'Syne Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#92600a;margin-bottom:8px;">Bharat Core</div>
+      <div style="font-size:11px;color:#7a5010;margin-bottom:4px;">Income: Rs &lt;1.5L</div>
+      <div style="font-size:11px;color:#92600a;margin-bottom:2px;">2024: 12% (~38M HH)</div>
+      <div style="font-size:11px;color:#92600a;margin-bottom:8px;">2034F: 6% (~23M HH) <span style="color:#c4500a;">&#8595;15M HH</span></div>
+      <div style="font-family:'Syne Mono',monospace;font-size:9px;color:#7a5010;letter-spacing:.04em;margin-bottom:4px;">Motivation: Price-Anchored, Essential Needs</div>
+      <div style="font-family:'Syne Mono',monospace;font-size:9px;color:#92600a;letter-spacing:.03em;">Categories: essentials, groceries</div>
+    </div>
+    <div style="background:var(--bg2);padding:18px 16px;">
+      <div style="font-family:'Syne Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:8px;">Value Upgraders</div>
+      <div style="font-size:11px;color:var(--ink2);margin-bottom:4px;">Income: Rs 1.5-5L</div>
+      <div style="font-size:11px;color:var(--ink3);margin-bottom:2px;">2024: 43% (~138M HH)</div>
+      <div style="font-size:11px;color:var(--ink3);margin-bottom:8px;">2034F: 34% (~140M HH) <span style="color:var(--accent2);">&#8593;2M HH</span></div>
+      <div style="font-family:'Syne Mono',monospace;font-size:9px;color:var(--ink3);letter-spacing:.04em;margin-bottom:4px;">Motivation: Trading Into Brands</div>
+      <div style="font-family:'Syne Mono',monospace;font-size:9px;color:var(--ink3);letter-spacing:.03em;">Categories: value retail, hygiene, OTT</div>
+    </div>
+    <div style="background:var(--bg2);padding:18px 16px;">
+      <div style="font-family:'Syne Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:8px;">Urban Aspirants</div>
+      <div style="font-size:11px;color:var(--ink2);margin-bottom:4px;">Income: Rs 5-10L</div>
+      <div style="font-size:11px;color:var(--ink3);margin-bottom:2px;">2024: 25% (~83M HH)</div>
+      <div style="font-size:11px;color:var(--ink3);margin-bottom:8px;">2034F: 30% (~122M HH) <span style="color:var(--accent2);">&#8593;39M HH</span></div>
+      <div style="font-family:'Syne Mono',monospace;font-size:9px;color:var(--ink3);letter-spacing:.04em;margin-bottom:4px;">Motivation: Identity and Lifestyle</div>
+      <div style="font-family:'Syne Mono',monospace;font-size:9px;color:var(--ink3);letter-spacing:.03em;">Categories: beauty, tech, fashion</div>
+    </div>
+    <div style="background:var(--bg2);padding:18px 16px;">
+      <div style="font-family:'Syne Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:8px;">Affluent India</div>
+      <div style="font-size:11px;color:var(--ink2);margin-bottom:4px;">Income: Rs 10L+</div>
+      <div style="font-size:11px;color:var(--ink3);margin-bottom:2px;">2024: 20% (~65M HH)</div>
+      <div style="font-size:11px;color:var(--ink3);margin-bottom:8px;">2034F: 30% (~122M HH) <span style="color:var(--accent2);">&#8593;57M HH</span></div>
+      <div style="font-family:'Syne Mono',monospace;font-size:9px;color:var(--ink3);letter-spacing:.04em;margin-bottom:4px;">Motivation: Premium Convenience</div>
+      <div style="font-family:'Syne Mono',monospace;font-size:9px;color:var(--ink3);letter-spacing:.03em;">Categories: premium FMCG, services</div>
+    </div>
+  </div>
+  <p style="font-family:'Syne Mono',monospace;font-size:9px;color:var(--ink3);letter-spacing:.04em;text-transform:uppercase;margin-bottom:36px;">Source: 3one4 Capital Consumption Report 2025</p>
+
+  <div style="overflow-x:auto;margin:0 0 36px;">
+    <table style="width:100%;border-collapse:collapse;min-width:700px;font-size:12.5px;">
+      <thead>
+        <tr>
+          <th style="background:var(--ink);color:#bbb;font-family:'Syne Mono',monospace;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;padding:11px 14px;text-align:left;border-right:1px solid #2a2820;font-weight:500;">Company</th>
+          <th style="background:var(--ink);color:#bbb;font-family:'Syne Mono',monospace;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;padding:11px 14px;text-align:left;border-right:1px solid #2a2820;font-weight:500;">Category</th>
+          <th style="background:var(--ink);color:#bbb;font-family:'Syne Mono',monospace;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;padding:11px 14px;text-align:left;font-weight:500;">Primary Archetype</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:var(--bg);"><td style="padding:12px 14px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);font-weight:600;color:var(--ink);">Licious</td><td style="padding:12px 14px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);color:var(--ink2);">Fresh and quality commerce</td><td style="padding:12px 14px;border-bottom:1px solid var(--rule);"><span style="background:var(--accent3-pale);color:var(--accent3);font-family:'Syne Mono',monospace;font-size:9px;padding:2px 7px;border:1px solid #b8b8d8;text-transform:uppercase;letter-spacing:.05em;">Urban Aspirants</span></td></tr>
+        <tr style="background:var(--bg2);"><td style="padding:12px 14px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);font-weight:600;color:var(--ink);">Kuku</td><td style="padding:12px 14px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);color:var(--ink2);">Vernacular audio and content</td><td style="padding:12px 14px;border-bottom:1px solid var(--rule);"><span style="background:var(--accent1-pale);color:var(--accent1);font-family:'Syne Mono',monospace;font-size:9px;padding:2px 7px;border:1px solid #f0b898;text-transform:uppercase;letter-spacing:.05em;">Value Upgraders</span></td></tr>
+        <tr style="background:var(--bg);"><td style="padding:12px 14px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);font-weight:600;color:var(--ink);">Kapiva</td><td style="padding:12px 14px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);color:var(--ink2);">Identity-led D2C wellness</td><td style="padding:12px 14px;border-bottom:1px solid var(--rule);"><span style="background:var(--accent3-pale);color:var(--accent3);font-family:'Syne Mono',monospace;font-size:9px;padding:2px 7px;border:1px solid #b8b8d8;text-transform:uppercase;letter-spacing:.05em;">Urban Aspirants</span></td></tr>
+        <tr style="background:var(--bg2);"><td style="padding:12px 14px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);font-weight:600;color:var(--ink);">Lokal</td><td style="padding:12px 14px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);color:var(--ink2);">Vernacular local news</td><td style="padding:12px 14px;border-bottom:1px solid var(--rule);"><span style="background:#fdf4e3;color:#92600a;font-family:'Syne Mono',monospace;font-size:9px;padding:2px 7px;border:1px solid #e8c87a;text-transform:uppercase;letter-spacing:.05em;">Bharat Core</span> <span style="background:var(--accent1-pale);color:var(--accent1);font-family:'Syne Mono',monospace;font-size:9px;padding:2px 7px;border:1px solid #f0b898;text-transform:uppercase;letter-spacing:.05em;">Value Upgraders</span></td></tr>
+        <tr style="background:var(--bg);"><td style="padding:12px 14px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);font-weight:600;color:var(--ink);">Elivaas</td><td style="padding:12px 14px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);color:var(--ink2);">Luxury villa rentals and experiences</td><td style="padding:12px 14px;border-bottom:1px solid var(--rule);"><span style="background:#f0f0f8;color:#2a2060;font-family:'Syne Mono',monospace;font-size:9px;padding:2px 7px;border:1px solid #c8c8e8;text-transform:uppercase;letter-spacing:.05em;">Affluent India</span></td></tr>
+        <tr style="background:var(--bg2);"><td style="padding:12px 14px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);font-weight:600;color:var(--ink);">Loco</td><td style="padding:12px 14px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);color:var(--ink2);">Gaming and esports streaming</td><td style="padding:12px 14px;border-bottom:1px solid var(--rule);"><span style="background:var(--accent3-pale);color:var(--accent3);font-family:'Syne Mono',monospace;font-size:9px;padding:2px 7px;border:1px solid #b8b8d8;text-transform:uppercase;letter-spacing:.05em;">Urban Aspirants</span></td></tr>
+        <tr style="background:var(--bg);"><td style="padding:12px 14px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);font-weight:600;color:var(--ink);">Pocket Aces</td><td style="padding:12px 14px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);color:var(--ink2);">Digital content studio</td><td style="padding:12px 14px;border-bottom:1px solid var(--rule);"><span style="background:var(--accent3-pale);color:var(--accent3);font-family:'Syne Mono',monospace;font-size:9px;padding:2px 7px;border:1px solid #b8b8d8;text-transform:uppercase;letter-spacing:.05em;">Urban Aspirants</span></td></tr>
+        <tr style="background:var(--bg2);"><td style="padding:12px 14px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);font-weight:600;color:var(--ink);">Inc42</td><td style="padding:12px 14px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);color:var(--ink2);">Startup media and news</td><td style="padding:12px 14px;border-bottom:1px solid var(--rule);"><span style="background:var(--accent3-pale);color:var(--accent3);font-family:'Syne Mono',monospace;font-size:9px;padding:2px 7px;border:1px solid #b8b8d8;text-transform:uppercase;letter-spacing:.05em;">Urban Aspirants</span></td></tr>
+        <tr style="background:var(--bg);"><td style="padding:12px 14px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);font-weight:600;color:var(--ink);">YourStory</td><td style="padding:12px 14px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);color:var(--ink2);">Startup media and news</td><td style="padding:12px 14px;border-bottom:1px solid var(--rule);"><span style="background:var(--accent3-pale);color:var(--accent3);font-family:'Syne Mono',monospace;font-size:9px;padding:2px 7px;border:1px solid #b8b8d8;text-transform:uppercase;letter-spacing:.05em;">Urban Aspirants</span></td></tr>
+        <tr style="background:var(--bg2);"><td style="padding:12px 14px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);font-weight:600;color:var(--ink);">Magic Crate</td><td style="padding:12px 14px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);color:var(--ink2);">Kids activity subscription box</td><td style="padding:12px 14px;border-bottom:1px solid var(--rule);"><span style="background:var(--accent3-pale);color:var(--accent3);font-family:'Syne Mono',monospace;font-size:9px;padding:2px 7px;border:1px solid #b8b8d8;text-transform:uppercase;letter-spacing:.05em;">Urban Aspirants</span></td></tr>
+        <tr style="background:var(--bg);"><td style="padding:12px 14px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);font-weight:600;color:var(--ink);">Lumio</td><td style="padding:12px 14px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);color:var(--ink2);">Smart home lighting</td><td style="padding:12px 14px;border-bottom:1px solid var(--rule);"><span style="background:#f0f0f8;color:#2a2060;font-family:'Syne Mono',monospace;font-size:9px;padding:2px 7px;border:1px solid #c8c8e8;text-transform:uppercase;letter-spacing:.05em;">Affluent India</span></td></tr>
+        <tr style="background:var(--bg2);"><td style="padding:12px 14px;border-right:1px solid var(--rule);font-weight:600;color:var(--ink);">Yulu</td><td style="padding:12px 14px;border-right:1px solid var(--rule);color:var(--ink2);">Shared electric mobility</td><td style="padding:12px 14px;"><span style="background:var(--accent1-pale);color:var(--accent1);font-family:'Syne Mono',monospace;font-size:9px;padding:2px 7px;border:1px solid #f0b898;text-transform:uppercase;letter-spacing:.05em;">Value Upgraders</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  </div>
+
+  <p style="font-family:'Syne Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:14px;">Initial observations</p>
+  <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;max-width:700px;">
+    <li style="font-size:15px;line-height:1.75;color:var(--ink2);padding-left:20px;border-left:2px solid var(--rule);"><strong>Urban Aspirants</strong> (Rs 5-10L, growing to 122M HH by 2034) is the primary archetype for 7 of 12 companies: Licious, Kapiva, Lokal, Loco, Pocket Aces, Inc42, YourStory, and Magic Crate. It is the clearest signal of where the fund has placed consumer conviction.</li>
+    <li style="font-size:15px;line-height:1.75;color:var(--ink2);padding-left:20px;border-left:2px solid var(--rule);"><strong>Affluent India</strong> (Rs 10L+) is served by only 2 companies: Elivaas and Lumio. Per the 3one4 Consumption Report 2025, this segment grows from 65M to 122M households by 2034, the largest absolute HH addition of any segment. It has the thinnest portfolio coverage.</li>
+    <li style="font-size:15px;line-height:1.75;color:var(--ink2);padding-left:20px;border-left:2px solid var(--rule);">Based on the thesis and the type of companies backed, here are three fast-growing consumer categories that I think would fit right in and are worth watching: Pet Care, Athleisure, and Fragrance.</li>
+  </ul>
+</section>
+
+<!-- 02.5 ARCHETYPE FIT -->
+<section class="wrap" id="archetypes">
+  <div class="s-label">02.5 / Archetype Fit</div>
+  <h2>Three gaps, mapped to<br><em>the archetypes they serve.</em></h2>
+  <p class="prose" style="margin-bottom:32px;">Each of the three categories below maps directly to the archetypes that already define the portfolio's consumer conviction.</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);">
+
+    <div style="background:var(--bg);padding:24px 22px;">
+      <div style="font-family:'Syne Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink3);margin-bottom:12px;">Gap 01</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--ink);margin-bottom:14px;">Pet Care</div>
+      <div style="margin-bottom:12px;">
+        <div style="font-size:11px;color:var(--ink3);margin-bottom:6px;font-family:'Syne Mono',monospace;text-transform:uppercase;letter-spacing:.06em;">Primary archetypes</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="background:var(--accent3-pale);color:var(--accent3);font-family:'Syne Mono',monospace;font-size:9px;padding:3px 9px;border:1px solid #b8b8d8;text-transform:uppercase;letter-spacing:.04em;">Urban Aspirants</span>
+          <span style="background:#f0f0f8;color:#2a2060;font-family:'Syne Mono',monospace;font-size:9px;padding:3px 9px;border:1px solid #c8c8e8;text-transform:uppercase;letter-spacing:.04em;">Affluent India</span>
+        </div>
+      </div>
+      <div style="font-size:13px;line-height:1.7;color:var(--ink2);">The first-time pet parent in India is almost entirely the Urban Aspirant: dual income, urban, treats pets as family. Combined growth of Urban Aspirants and Affluent India is <strong>+96M households by 2034</strong>.</div>
+      <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--rule);">
+        <div style="font-family:'Syne Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3);margin-bottom:8px;">Aspirational archetype fit</div>
+        <div style="font-size:12.5px;color:var(--ink2);line-height:1.65;"><strong>The Modern Parent</strong> (conscious choices, baby care, kids nutrition) sits within the Urban Aspirants and Affluent India income bands, the same two archetypes primary to pet care. Conscious choices for children extend naturally to pets in the same household. <strong>The Self-Optimizer</strong> (health, performance, active care) is the Gen Z and millennial Urban Aspirant who applies the same health-first lens to their pets as to themselves.</div>
+      </div>
+    </div>
+
+    <div style="background:var(--bg);padding:24px 22px;border-left:1px solid var(--rule);border-right:1px solid var(--rule);">
+      <div style="font-family:'Syne Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink3);margin-bottom:12px;">Gap 02</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--ink);margin-bottom:14px;">Athleisure</div>
+      <div style="margin-bottom:12px;">
+        <div style="font-size:11px;color:var(--ink3);margin-bottom:6px;font-family:'Syne Mono',monospace;text-transform:uppercase;letter-spacing:.06em;">Primary archetypes</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="background:var(--accent3-pale);color:var(--accent3);font-family:'Syne Mono',monospace;font-size:9px;padding:3px 9px;border:1px solid #b8b8d8;text-transform:uppercase;letter-spacing:.04em;">Urban Aspirants</span>
+          <span style="background:#f0f0f8;color:#2a2060;font-family:'Syne Mono',monospace;font-size:9px;padding:3px 9px;border:1px solid #c8c8e8;text-transform:uppercase;letter-spacing:.04em;">Affluent India</span>
+        </div>
+      </div>
+      <div style="font-size:13px;line-height:1.7;color:var(--ink2);">Urban Aspirants (83M HH growing to 122M by 2034) are the core buyer: identity-led, fitness-conscious, brand-first. The consumption report lists fashion and tech as their primary categories. Activewear sits at the intersection of both. <strong>110M Indians actively participated in fitness in 2024</strong>, and every one of them buys clothing for it.</div>
+      <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--rule);">
+        <div style="font-family:'Syne Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3);margin-bottom:8px;">Aspirational archetype fit</div>
+        <div style="font-size:12.5px;color:var(--ink2);line-height:1.65;"><strong>The Self-Optimizer</strong> (health, performance, personal best) is the primary. Activewear is the most visible expression of a fitness identity, worn beyond the gym into daily life. <strong>The Indie Luxe Shopper</strong> (identity, design, status) is the secondary: choosing an Indian brand over Nike as a deliberate identity statement about supporting domestic design.</div>
+      </div>
+    </div>
+
+    <div style="background:var(--bg);padding:24px 22px;">
+      <div style="font-family:'Syne Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink3);margin-bottom:12px;">Gap 03</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--ink);margin-bottom:14px;">Fragrance</div>
+      <div style="margin-bottom:12px;">
+        <div style="font-size:11px;color:var(--ink3);margin-bottom:6px;font-family:'Syne Mono',monospace;text-transform:uppercase;letter-spacing:.06em;">Primary archetypes</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="background:var(--accent3-pale);color:var(--accent3);font-family:'Syne Mono',monospace;font-size:9px;padding:3px 9px;border:1px solid #b8b8d8;text-transform:uppercase;letter-spacing:.04em;">Urban Aspirants</span>
+          <span style="background:#f0f0f8;color:#2a2060;font-family:'Syne Mono',monospace;font-size:9px;padding:3px 9px;border:1px solid #c8c8e8;text-transform:uppercase;letter-spacing:.04em;">Affluent India</span>
+        </div>
+      </div>
+      <div style="font-size:13px;line-height:1.7;color:var(--ink2);">The 3one4 Consumption Report lists beauty and fashion as Urban Aspirant category preferences. Fragrance sits at the intersection of both. Affluent India (+57M HH by 2034) is the secondary buyer for niche and premium positioning.</div>
+      <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--rule);">
+        <div style="font-family:'Syne Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3);margin-bottom:8px;">Aspirational archetype fit</div>
+        <div style="font-size:12.5px;color:var(--ink2);line-height:1.65;"><strong>The Indie Luxe Shopper</strong> (identity, design, status, premium fashion and beauty) is the primary. Fragrance is one of the clearest expressions of identity-led purchasing: you choose a scent to signal who you are. <strong>The Self-Optimizer</strong> (wellness, active care) maps to the wellness-adjacent fragrance sub-category, aromatherapy and mood-linked scents, which brands like Secret Alchemist are already building.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 GAPS -->
+<section class="wrap" id="gaps">
+  <div class="s-label">03 / Three Gaps</div>
+  <h2>Three categories.<br><em>India-specific, fast-growing, and underfunded.</em></h2>
+  <p class="prose">Each one is growing fast. Pet care at 20% CAGR, athleisure sports apparel at 15.5% CAGR, fragrance adding $3.8B in absolute value by 2030. Each fits the consumer archetypes the fund has already backed. None are in the portfolio.</p>
+
+  <!-- GAP 1: PET CARE -->
+  <div class="gap-block">
+    <div class="gap-header">
+      <div class="gap-title-block">
+        <div class="gap-num">Gap 01</div>
+        <div class="gap-title">Pet Care<br><em>A $7B market with a trust deficit and no dominant D2C brand.</em></div>
+        <div class="gap-sub">D2C pet food, wellness, services and veterinary care</div>
+      </div>
+      <div class="gap-stat-box">
+        <div class="gsb-n">$7B</div>
+        <div class="gsb-l">India pet care market projected by 2028, up from $3.6B in 2024 at 20% CAGR</div>
+        <span class="gsb-src"><a href="https://pulse.d2cinsider.com/supertails-raises-30-mn-to-build-indias-full-stack-petcare-ecosystem/" target="_blank">Redseer via D2C Insider</a></span>
+      </div>
+    </div>
+
+    <div class="gap-body">
+      <div class="gap-col">
+        <h3>Why this fits the pattern</h3>
+        <p class="gap-text">Buying pet food in India today mostly means unorganised markets, inconsistent quality, no nutritional labelling, and zero veterinary guidance. <strong>70% of current Indian pet parents are first-time owners</strong>. For most of them, the dominant behaviour is anxiety, not habit. A brand that solves trust, quality, and convenience for this buyer has a long runway before it faces a credible challenger.</p>
+        <p class="gap-text">Buying pet food from an unorganised market, the default for most Indian pet owners, means inconsistent quality, no nutritional labelling, and zero veterinary guidance. The first-time pet parent (70% of current owners) is anxious, aspirational, and willing to pay for trust. They want what the urban Indian meat buyer wanted in 2016: a brand they can rely on.</p>
+        <p class="gap-text">The FMCG pile-in is the clearest signal that the category has crossed a threshold. <strong>Reliance launched Waggies, Wipro launched HappyFur, Godrej launched Ninja, all in 2025-26.</strong> Nestlé Purina has called India a "mega-market." Incumbents validate categories; founders own them. The sequence is now in motion.</p>
+      </div>
+      <div class="gap-col">
+        <h3>Market signals</h3>
+        <div class="gap-stats">
+          <div class="gs">
+            <div class="gs-n">42M</div>
+            <div class="gs-l">pets in Indian households in 2024, up from 26M in 2019</div>
+            <span class="gs-src"><a href="https://globalpetindustry.com/news/the-pet-industry-in-india/" target="_blank">Euromonitor via GlobalPets</a></span>
+          </div>
+          <div class="gs">
+            <div class="gs-n">70%</div>
+            <div class="gs-l">of Indian pet parents are first-time owners in 2024</div>
+            <span class="gs-src"><a href="https://www.expertmarketresearch.com/reports/india-pet-care-products-market" target="_blank">Expert Market Research</a></span>
+          </div>
+          <div class="gs">
+            <div class="gs-n">$124M</div>
+            <div class="gs-l">total VC funding in Indian pet care startups from 2022 to Nov 2025 across 64 rounds</div>
+            <span class="gs-src"><a href="https://pulse.d2cinsider.com/supertails-in-talks-to-raise-15-20-mn-as-indias-petcare-boom-spurs-next-wave-of-d2c-growth/" target="_blank">D2C Insider Pulse</a></span>
+          </div>
+          <div class="gs">
+            <div class="gs-n">23.7%</div>
+            <div class="gs-l">CAGR for India pet care products market through 2035</div>
+            <span class="gs-src"><a href="https://www.expertmarketresearch.com/reports/india-pet-care-products-market" target="_blank">Expert Market Research</a></span>
+          </div>
+        </div>
+        <p class="gap-text" style="margin-top:16px;">$124M deployed against a $7B market by 2028. The gap between capital deployed and market size is the opportunity.</p>
+      </div>
+    </div>
+
+    <div class="cs-block">
+      <div class="cs-block-label">Brands building in this space</div>
+      <div class="cs-row">
+        <div class="cs">
+          <div class="cs-name">Supertails</div>
+          <div class="cs-desc">Founded 2021 by three former Licious executives. Rs 250cr annualised run rate. $57.6M raised including $30M Series C from Venturi Partners in Feb 2026. Full-stack: pet food, vet clinics, grooming, pharmacy. 5x customer growth in two years.</div>
+          <span class="cs-tag t-series">Series C / Venturi</span>
+        </div>
+        <div class="cs">
+          <div class="cs-name">Heads Up for Tails</div>
+          <div class="cs-desc">Premium pet products and accessories. Omnichannel, 83+ stores nationally. $38.5M raised from A91 Partners and Motilal Oswal PE. Focused on premium product retail rather than services.</div>
+          <span class="cs-tag t-series">Series B / A91</span>
+        </div>
+        <div class="cs">
+          <div class="cs-name">Vetic</div>
+          <div class="cs-desc">Veterinary-first pet care platform. $25M raised. Clinic network plus D2C health products. Positions veterinary care as the trust anchor for the broader platform.</div>
+          <span class="cs-tag t-series">Series A / $25M</span>
+        </div>
+        <div class="cs">
+          <div class="cs-name">Wiggles</div>
+          <div class="cs-desc">Pet nutrition and wellness supplements. D2C-first. Early revenue stage. Building in the product and nutrition layer that sits between food and veterinary care.</div>
+          <span class="cs-tag t-seed">Seed / Early</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="src-line">Sources: <a href="https://pulse.d2cinsider.com/supertails-raises-30-mn-to-build-indias-full-stack-petcare-ecosystem/" target="_blank">D2C Insider / Supertails</a> &nbsp; <a href="https://www.expertmarketresearch.com/reports/india-pet-care-products-market" target="_blank">Expert Market Research</a> &nbsp; <a href="https://globalpetindustry.com/news/the-pet-industry-in-india/" target="_blank">Euromonitor via GlobalPets</a> &nbsp; <a href="https://www.whalesbook.com/news/English/Consumer-Products/Pet-Care-Wars-Giants-and-Startups-Brace-for-2026-Indian-Market-Explosion/694ddfc8e10c98d0788d848a" target="_blank">Whalesbook / FMCG entry</a> &nbsp; <a href="https://yourstory.com/2024/02/supertails-pet-care-startup-series-b-funding-rpsg-capital-ventures" target="_blank">YourStory / Supertails Series B</a></div>
+  </div>
+
+  <!-- GAP 2: ATHLEISURE -->
+  <div class="gap-block">
+    <div class="gap-header">
+      <div class="gap-title-block">
+        <div class="gap-num">Gap 02</div>
+        <div class="gap-title">Athleisure and Activewear<br><em>110M Indians working out. No dominant Indian identity brand serving them.</em></div>
+        <div class="gap-sub">D2C performance apparel with Indian-first design, community, and identity</div>
+      </div>
+      <div class="gap-stat-box">
+        <div class="gsb-n">$2.15B</div>
+        <div class="gsb-l">India sports apparel market by 2032, from $680M in 2024 at 15.5% CAGR</div>
+        <span class="gsb-src"><a href="https://www.maximizemarketresearch.com/market-report/india-sports-apparel-market/77721/" target="_blank">Maximize Market Research</a></span>
+      </div>
+    </div>
+
+    <div class="gap-body">
+      <div class="gap-col">
+        <h3>The structural gap</h3>
+        <p class="gap-text">Over 110 million Indians actively participated in fitness, gym workouts, running, and sports in 2024 (<a href="https://www.maximizemarketresearch.com/market-report/india-sports-apparel-market/77721/" target="_blank" style="color:var(--ink2);">Maximize Market Research</a>). Every one of them buys clothing for it. E-commerce sportswear sales grew 32% in 2024, with Myntra, Amazon, and Flipkart becoming primary discovery channels (<a href="https://www.imarcgroup.com/india-sportswear-market" target="_blank" style="color:var(--ink2);">IMARC</a>).</p>
+        <p class="gap-text">The market today is Decathlon at the value end and Nike, Adidas, and Puma at premium — with the top five global players accounting for 55-60% of branded sportswear revenue in India (<a href="https://www.imarcgroup.com/india-sportswear-market" target="_blank" style="color:var(--ink2);">IMARC</a>). <strong>The middle is almost entirely empty.</strong> An Indian, identity-led, premium-but-accessible activewear brand that understands Indian gym culture, Indian body types, and Indian climate does not exist at scale. BlissClub proved this works for women. The men's equivalent — tank tops, joggers, printed gym wear built around Indian gym culture — has no dominant player. Men's athleisure is now the fastest-growing segment in the category (<a href="https://www.marketresearchfuture.com/reports/india-athleisure-market-46386" target="_blank" style="color:var(--ink2);">Market Research Future</a>).</p>
+      </div>
+      <div class="gap-col">
+        <h3>Why this fits 3one4's pattern</h3>
+        <p class="gap-text">The consumption report identifies Urban Aspirants (identity and lifestyle) and the Self-Optimizer (health, performance, personal best) as two of the six aspirational archetypes driving the next decade of consumer spending. Activewear sits at the exact intersection of both. It is purchased for performance and worn as identity.</p>
+        
+        <div class="gap-stats" style="margin-top:16px">
+          <div class="gs">
+            <div class="gs-n">32%</div>
+            <div class="gs-l">YoY growth in e-commerce sportswear sales in India in 2024</div>
+            <span class="gs-src"><a href="https://www.imarcgroup.com/india-sportswear-market" target="_blank">IMARC Group</a></span>
+          </div>
+          <div class="gs">
+            <div class="gs-n">15.5%</div>
+            <div class="gs-l">CAGR India sports apparel market 2024 to 2032</div>
+            <span class="gs-src"><a href="https://www.maximizemarketresearch.com/market-report/india-sports-apparel-market/77721/" target="_blank">Maximize Market Research</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-block">
+      <div class="cs-block-label">Brands building in this space</div>
+      <div class="cs-row">
+        <div class="cs">
+          <div class="cs-name">BlissClub</div>
+          <div class="cs-desc">Women's activewear, community-first. Bengaluru. $21.6M raised from Elevation Capital and Eight Roads. 51% revenue jump in FY25, losses cut 54.5%. In talks to raise Rs 200-250cr at Rs 750cr valuation from Singularity PE. Proved the Indian women's side. The men's equivalent does not exist.</div>
+          <span class="cs-tag t-series">Series B / Elevation Capital</span>
+        </div>
+        <div class="cs">
+          <div class="cs-name">Cava Athleisure</div>
+          <div class="cs-desc">Founded 2022 by Ria and Shreya Mittal. Rs 40cr Series A from Sharrp Ventures (Harsh Mariwala family office). Proprietary ADPT fabric developed in-house. One of India's first athleisure brands on Zepto. Valuation doubled to Rs 120cr in six months post-seed.</div>
+          <span class="cs-tag t-series">Series A / Sharrp Ventures</span>
+        </div>
+        <div class="cs">
+          <div class="cs-name">Terractive</div>
+          <div class="cs-desc">Performance activewear. DeVC-backed in 2024. Early stage, growing through D2C and offline fitness communities. Strong cultural positioning before institutional capital arrived.</div>
+          <span class="cs-tag t-angel">Angel / DeVC 2024</span>
+        </div>
+        <div class="cs">
+          <div class="cs-name">Dida</div>
+          <div class="cs-desc">Indian performance sportswear for runners and gym-goers. Bootstrapped. Strong word-of-mouth in running communities. Growing organically through community, which is how identity-driven activewear brands actually scale.</div>
+          <span class="cs-tag t-none">Bootstrapped</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="src-line">Sources: <a href="https://www.maximizemarketresearch.com/market-report/india-sports-apparel-market/77721/" target="_blank">Maximize Market Research</a> &nbsp; <a href="https://www.imarcgroup.com/india-sportswear-market" target="_blank">IMARC Group</a> &nbsp; <a href="https://www.marketresearchfuture.com/reports/india-athleisure-market-46386" target="_blank">Market Research Future</a> &nbsp; <a href="https://pulse.d2cinsider.com/blissclub-set-to-raise-%E2%82%B9250-cr-from-singularity-at-%E2%82%B9750-cr-valuation-accelerating-indias-d2c-activewear-growth/" target="_blank">D2C Insider / BlissClub</a> &nbsp; <a href="https://india.entrepreneur.com/news-and-trends/cava-athleisure-bags-inr-40-cr-series-a-funding/502302" target="_blank">Entrepreneur India / Cava</a></div>
+  </div>
+
+  <!-- GAP 3: FRAGRANCE -->
+  <div class="gap-block">
+    <div class="gap-header">
+      <div class="gap-title-block">
+        <div class="gap-num">Gap 03</div>
+        <div class="gap-title">Fragrance and Perfume<br><em>A $1.25B market adding $3.8B in value by 2030, with no scaled Indian D2C brand.</em></div>
+        <div class="gap-sub">D2C fragrance brands for India's premium and affordable-luxury consumer</div>
+      </div>
+      <div class="gap-stat-box">
+        <div class="gsb-n">$3.8B</div>
+        <div class="gsb-l">Absolute growth in India perfume market 2025 to 2030, from $1.25B base. Niche fragrances the fastest-growing segment.</div>
+        <span class="gsb-src"><a href="https://www.technavio.com/report/perfume-market-in-india-industry-analysis" target="_blank">Technavio 2026</a></span>
+      </div>
+    </div>
+
+    <div class="gap-body">
+      <div class="gap-col">
+        <h3>Why this fits the pattern</h3>
+        <p class="gap-text"><strong>Fragrance in India today has a clear structural gap at the mid-market.</strong> The traditional category is dominated by attars (fragmented, unorganised) at the low end and imported luxury brands at the premium end. There is almost nothing in the middle, an Indian, identity-led, premium-but-accessible fragrance brand that understands Indian climate, Indian skin chemistry, and India's cultural relationship with scent.</p>
+        <p class="gap-text">The India-specific angle is the moat. Attar culture, covering gifting, religious use, and heritage, is a brand identity that imported luxury brands cannot access. A founder building around that cultural context owns terrain that no foreign brand can replicate.</p>
+      </div>
+      <div class="gap-col">
+        <h3>Market signals</h3>
+        <div class="gap-stats">
+          <div class="gs">
+            <div class="gs-n">$1.25B</div>
+            <div class="gs-l">India fragrance market 2025, projected to reach $2B by 2034</div>
+            <span class="gs-src"><a href="https://theindiawatch.com/insights-new/retail/digital-first-perfume-brands-india-market-opportunity" target="_blank">The India Watch</a></span>
+          </div>
+          <div class="gs">
+            <div class="gs-n">30+</div>
+            <div class="gs-l">fragrance brands entered India's ecosystem between 2018 and 2025, per Inc42 research</div>
+            <span class="gs-src"><a href="https://inc42.com/features/chasing-the-scent-of-indias-next-d2c-breakout/" target="_blank">Inc42</a></span>
+          </div>
+        </div>
+        <p class="gap-text" style="margin-top:16px;">Total institutional VC into Indian D2C fragrance remains in the tens of millions against a $1.25B market projected to add $3.8B in value by 2030 (Technavio). Fireside Ventures has publicly called it the "fastest-growing BPC sub-segment," and V3 Ventures and DSG Consumer Partners are reportedly preparing to enter (<a href="https://inc42.com/features/chasing-the-scent-of-indias-next-d2c-breakout/" target="_blank" style="color:var(--ink2);">Inc42</a>). The window is early.</p>
+        <p class="gap-text">AdilQadri hit $22M in revenue in 2025, growing 1.5x year on year. Bellavita crossed Rs 1,800cr revenue in FY25. The scale of consumer demand is already evident. The gap is between how fast the category is growing and how little institutional capital has been deployed into it.</p>
+      </div>
+    </div>
+
+    <div class="cs-block">
+      <div class="cs-block-label">Brands building in this space</div>
+      <div class="cs-row">
+        <div class="cs">
+          <div class="cs-name">House of EM5</div>
+          <div class="cs-desc">Solid perfumes, affordable sprays, premium blends. Aman Gupta (boAt) invested on Shark Tank India Season 4. Suryakumar Yadav invested in 2026. 24.5M+ views on viral Instagram campaign. Community-first growth.</div>
+          <span class="cs-tag t-angel">Angel / Celebrity-backed</span>
+        </div>
+        <div class="cs">
+          <div class="cs-name">AdilQadri</div>
+          <div class="cs-desc">Modern attar brand blending traditional Indian attars with contemporary positioning. $22M revenue in 2025, growing 1.5x since 2024. 40 exclusive stores nationwide. Making attar aspirational for Gen Z.</div>
+          <span class="cs-tag t-series">Bootstrapped to scale</span>
+        </div>
+        <div class="cs">
+          <div class="cs-name">Secret Alchemist</div>
+          <div class="cs-desc">Clean perfumes blending fragrance with wellness and aromatherapy. $3M raised from Unilever Ventures. Positions at the intersection of BPC and fragrance, a category Fireside is now tracking closely.</div>
+          <span class="cs-tag t-seed">Seed / Unilever Ventures</span>
+        </div>
+        <div class="cs">
+          <div class="cs-name">Fifth Sense</div>
+          <div class="cs-desc">Climate-adapted fragrances for Indian weather conditions, formulated specifically for Indian humidity and skin. Rs 6.3cr pre-seed from OTP Ventures. Founded by IIM Kozhikode alumni.</div>
+          <span class="cs-tag t-angel">Pre-seed / OTP Ventures</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="src-line">Sources: <a href="https://www.technavio.com/report/perfume-market-in-india-industry-analysis" target="_blank">Technavio Perfume Market 2026</a> &nbsp; <a href="https://inc42.com/features/chasing-the-scent-of-indias-next-d2c-breakout/" target="_blank">Inc42 / D2C Fragrance</a> &nbsp; <a href="https://theindiawatch.com/insights-new/retail/digital-first-perfume-brands-india-market-opportunity" target="_blank">The India Watch</a> &nbsp; <a href="https://pulse.d2cinsider.com/fifth-sense-raises-%E2%82%B96-3-cr-to-build-premium-d2c-fragrance-brand-for-indias-evolving-perfume-market/" target="_blank">D2C Insider / Fifth Sense</a> &nbsp; <a href="https://www.marketresearchfuture.com/reports/india-fragrance-market-48407" target="_blank">Market Research Future</a></div>
+  </div>
+</section>
+
+<!-- 03 WHY ME -->
+<section class="wrap" id="why">
+  <div class="s-label">04 / Why I Can Do This</div>
+  <h2>I'm Varchas Manohar.<br><em>Generalist at Vumonic Datalabs.</em></h2>
+  <p class="prose">Went from intern to owning product, data operations, and GTM in a founder's office. Five things from that time relevant here.</p>
+
+  <div class="why-list" style="margin-top:28px;">
+    <div class="why-item">
+      <div class="why-n">01</div>
+      <div>
+        <div class="why-label">Pattern recognition across data</div>
+        <div class="why-head">Built a system linking 1.3M consumer transactions to stock tickers, then proved it with financial backtesting</div>
+        <div class="why-body">The work required holding two things at once: understanding what the data could do technically and what a hedge fund needed to trust it commercially. That's the same skill an analyst needs: mapping what market data says to what a portfolio decision should be.</div>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-n">02</div>
+      <div>
+        <div class="why-label">Root cause before recommendation</div>
+        <div class="why-head">Three weeks into my internship, traced client complaints to a pipeline root cause and freed up 30-40% of the data team's time</div>
+        <div class="why-body">The same instinct applies here: the underfunding gap in fragrance is not a coincidence, it's a structural pattern in how Indian consumer VC has been deployed. Understanding why a gap exists is more valuable than just identifying that it does.</div>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-n">03</div>
+      <div>
+        <div class="why-label">Built the sales pipeline from zero</div>
+        <div class="why-head">Grew Vumonic's pipeline to 1,000+ deals and 2,000+ clients in a two-person team</div>
+        <div class="why-body">Sourcing deals for a fund is structurally similar. You need to find founders before they're obvious, develop a view before a deck exists, and form a conviction independently. Building a pipeline from nothing is the same muscle either way.</div>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-n">04</div>
+      <div>
+        <div class="why-label">Learned whatever the job needed</div>
+        <div class="why-head">Taught myself the Gemini API and shipped a production website in 72 hours when no developer was available</div>
+        <div class="why-body">Sector mapping, financial benchmarking, founder outreach frameworks. Whatever the research process needs, I'll build it rather than wait for it to exist.</div>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-n">05</div>
+      <div>
+        <div class="why-label">Product and GTM simultaneously</div>
+        <div class="why-head">Supported M&A due diligence while running client-facing sales and managing data delivery</div>
+        <div class="why-body">Working across multiple functions without losing thread is not a skill I built separately. It's the only mode I've worked in since day one.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:48px;">
+    <p style="font-family:'Syne Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:18px;">Where I can contribute</p>
+    <div class="contrib">
+      <div class="cc">
+        <div class="cc-title">Deal Sourcing</div>
+        <div class="cc-body">Proactive founder identification in white-space categories before deals arrive inbound. Sector mapping, founder network development, and early-stage signal tracking across consumer internet sub-verticals the portfolio does not currently cover.</div>
+      </div>
+      <div class="cc">
+        <div class="cc-title">Market Intelligence</div>
+        <div class="cc-body">Ongoing sector briefs on consumer behaviour shifts, competitive dynamics, and macro trends. The three category analyses above are the sample. The same rigour applied continuously across every sub-sector relevant to the consumer internet thesis.</div>
+      </div>
+      <div class="cc">
+        <div class="cc-title">Investment Evaluation</div>
+        <div class="cc-body">First-pass assessment of inbound deals: founder background, market sizing, competitive positioning, and fit against 3one4's trust-first commerce pattern. A scored evaluation framework calibrated to how the fund actually decides, not a generic template.</div>
+      </div>
+      <div class="cc">
+        <div class="cc-title">Portfolio Pattern Recognition</div>
+        <div class="cc-body">Mapping existing portfolio companies to surface concentration risks, collaboration opportunities, and gaps in coverage relative to the fund's stated thesis. The consumer internet portfolio is broad. Systematic mapping surfaces what the team doesn't have bandwidth to track.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <div class="cta-in">
+    <h2>I want to join<br><em>3one4's investment team.</em></h2>
+    <p class="cta-body">Based in Bengaluru. Happy to get on a call or go deeper on any part of this.</p>
+    <div class="cta-btns">
+      <a class="btn btn-p" href="https://www.linkedin.com/in/varchasmanohar/" target="_blank">LinkedIn: Varchas Manohar</a>
+      <a class="btn btn-s" href="mailto:varchasmanohar@gmail.com">varchasmanohar@gmail.com</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
